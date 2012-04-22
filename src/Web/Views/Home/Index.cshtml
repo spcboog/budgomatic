@@ -1,0 +1,42 @@
+﻿@model Budgomatic.Web.Models.Home.IndexModel
+
+@{
+    ViewBag.Title = "Budgomatic";
+}
+
+@using Budgomatic.Core.Domain
+
+<h2>Balances</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Date, "Balance Date")
+</div>
+<div class="editor-field">
+    @Html.TextBoxFor(model => model.Date, new { data_datepicker = true, Value=String.Format("{0:yyyy-MM-dd}", Model.Date), @class = "balanceDate" })
+    @Html.ValidationMessageFor(model => model.Date)
+</div>
+
+<br />
+
+<table id="balances">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Balance
+        </th>
+    </tr>
+
+@foreach (var accountBalance in Model.AccountBalances)
+{
+    <tr>
+        <td>@accountBalance.AccountName</td>
+        <td>@accountBalance.Balance</td>
+    </tr>
+}
+</table>

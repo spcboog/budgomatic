@@ -1,0 +1,77 @@
+﻿@model Budgomatic.Web.Models.IncomeTransaction.CreateModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Income</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SelectedIncomeAccountId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.SelectedIncomeAccountId,
+                 Model
+                     .IncomeAccounts
+                     .Select(x => new SelectListItem
+                     {
+                         Text = x.Name,
+                         Value = x.Id.ToString()
+                     }))
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SelectedAssetAccountId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.SelectedAssetAccountId,
+                 Model
+                     .AssetAccounts
+                     .Select(x => new SelectListItem
+                     {
+                         Text = x.Name,
+                         Value = x.Id.ToString()
+                     }))
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Amount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Amount)
+            @Html.ValidationMessageFor(model => model.Amount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Comments)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Comments)
+            @Html.ValidationMessageFor(model => model.Comments)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Transaction")
+</div>

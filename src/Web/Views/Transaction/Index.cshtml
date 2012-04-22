@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Budgomatic.Core.Domain.Transaction>
+           
+@using Budgomatic.Core.Domain
+
+@{
+    ViewBag.Title = "Transactions";
+}
+
+<h2>Transactions</h2>
+
+<div>
+    Add New Transaction +   
+    @Html.ActionLink("Expense", "Create", "ExpenseTransaction")
+    @Html.ActionLink("Income", "Create", "IncomeTransaction")
+    @Html.ActionLink("Transfer", "Create", "TransferTransaction")
+</div>
+
+<br />
+
+<table>
+    <tr>
+        <th>
+            Date
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Comments
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Date.ToString("yyyy-MM-dd")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id, type = item.Type }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

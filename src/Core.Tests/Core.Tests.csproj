@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5354C704-8484-4FC4-8643-A6987A63EFBE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Budgomatic.Core.Tests</RootNamespace>
+    <AssemblyName>Budgomatic.Core.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate, Version=1.3.0.717, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\FluentNHibernate.1.3.0.717\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\NHibernate.3.2.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Ninject.3.0.0.15\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lib\nunit\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\packages\System.Data.SQLite.1.0.80.0\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\AreTransactionEntriesValidCommandFixture.cs" />
+    <Compile Include="DataAccess\DataAccessFixture.cs" />
+    <Compile Include="DataAccess\GetAccountBalanceForDateCommandFixture.cs" />
+    <Compile Include="DataAccess\Maps\AssetAccountMapFixture.cs" />
+    <Compile Include="DataAccess\Maps\EntryMapFixture.cs" />
+    <Compile Include="DataAccess\Maps\ExpenseAccountMapFixture.cs" />
+    <Compile Include="DataAccess\Maps\ExpenseTransactionMapFixture.cs" />
+    <Compile Include="DataAccess\Maps\IncomeAccountMapFixture.cs" />
+    <Compile Include="DataAccess\Maps\IncomeTransactionMapFixture.cs" />
+    <Compile Include="DataAccess\Maps\LiabilityAccountMapFixture.cs" />
+    <Compile Include="DataAccess\Maps\MapFixture.cs" />
+    <Compile Include="DataAccess\Maps\TransferTransactionMapFixture.cs" />
+    <Compile Include="DataAccess\RepositoryFixture.cs" />
+    <Compile Include="DataAccess\RepositoryOfAccountFixture.cs" />
+    <Compile Include="DataAccess\RepositoryOfTransactionFixture.cs" />
+    <Compile Include="Domain\AccountFixture.cs" />
+    <Compile Include="Domain\AssetAccountFixture.cs" />
+    <Compile Include="Domain\EntityFixture.cs" />
+    <Compile Include="Domain\EntryFixture.cs" />
+    <Compile Include="Domain\ExpenseAccountFixture.cs" />
+    <Compile Include="Domain\ExpenseTransactionFixture.cs" />
+    <Compile Include="Domain\IncomeAccountFixture.cs" />
+    <Compile Include="Domain\IncomeTransactionFixture.cs" />
+    <Compile Include="Domain\LiabilityAccountFixture.cs" />
+    <Compile Include="Domain\TransactionFixture.cs" />
+    <Compile Include="Domain\TransferTransactionFixture.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{DE56549E-5757-4A3A-9D57-D595710D88CA}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

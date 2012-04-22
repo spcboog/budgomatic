@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Budgomatic.Web.Models.Home.AccountBalance>
+
+<table id="balances">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Balance
+        </th>
+    </tr>
+
+@foreach (var accountBalance in Model)
+{
+    <tr>
+        <td>@accountBalance.AccountName</td>
+        <td>@accountBalance.Balance</td>
+    </tr>
+}
+</table>
