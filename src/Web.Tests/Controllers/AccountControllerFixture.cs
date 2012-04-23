@@ -127,7 +127,7 @@ namespace Budgomatic.Web.Tests.Controllers
             _repository.Stub(x => x.Find<Account>(id)).Return(account);
             _repository.Expect(x => x.Save(
                 Arg<Account>.Matches(y => 
-                    (y.Id == id) && (y.Name == newName))));
+                    (y.Id == id) && (y.Name == newName)))).Return(account);
 
             var controller = GetController();
             controller.Edit(model);
